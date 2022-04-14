@@ -1,0 +1,58 @@
+<ngx-spinner
+  bdColor="rgba(0, 0, 0, 0.8)"
+  size="medium"
+  color="#fff"
+  type="square-loader"
+  [fullScreen]="true"
+  ><p style="color: white">Loading...</p></ngx-spinner
+>
+<div class="container mt-3">
+  <div class="row">
+    <div class="col">
+      <div class="card">
+        <div class="card-header bg-secondary text-white">
+          <h4>GitHub User Search</h4>
+        </div>
+        <div class="card-body">
+          <form class="d-flex g-3" (submit)="searchGitHubUser()">
+            <div>
+              <input
+                name="username"
+                type="search"
+                class="form-control"
+                placeholder="GiHub username"
+                [(ngModel)]="gitHubUserQuery"
+              />
+            </div>
+            <div class="form-group">
+              <input
+                type="submit"
+                value="Search"
+                class="btn btn-secondary btn-sm"
+                placeholder="GitHub username"
+              />
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- GitHub User profile details -->
+  <div *ngIf="gitHubUserProfile">
+    <div class="row">
+      <div class="col">
+        <github-profile
+          [gitHubUserProfile]="gitHubUserProfile"
+        ></github-profile>
+      </div>
+    </div>
+
+    <!-- GitHub User repos -->
+    <div class="row">
+      <div class="col">
+        <github-repos></github-repos>
+      </div>
+    </div>
+  </div>
+</div>
